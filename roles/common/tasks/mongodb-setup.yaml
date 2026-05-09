@@ -1,0 +1,40 @@
+- name: Copy mongodb repo
+  ansible.builtin.copy:
+    src: mongo.repo
+    dest: /etc/yum.repos.d/mongo.repo
+
+- name: Install mongodb-mongosh client
+  ansible.builtin.package:
+    name: mongodb-mongosh
+    state: present
+
+- name: "get the catalogue entries count"
+  ansible.builtin.shell:  mongosh  --host {{MONGODB_HOST}} --quiet --eval 'db = db.getSiblingDB("catalogue"); db.products.countDocuments()'
+  register: products_count
+  when: component == "catalogue"
+
+- name: print the products_count
+  ansible.builtin.debug:
+    msg: "entries products_count: {{products_count}}"
+  when: component == "catalogue"
+
+- name: "load catalogue data"
+  ansible.builtin.shell: "mongosh --host {{MONGODB_HOST}} < /app/schema/{{component}}.js"
+  when: component == "catalogue" and products_count.stdout == "0"  # keep double quotes
+  #ignore_errors: true
+
+- name: "get the user entries count"
+  ansible.builtin.shell:  mongosh --host {{MONGODB_HOST}} --quiet --eval 'db = db.getSiblingDB("users"); db.users.countDocuments()'
+  register: users_count
+  when: component == "user"
+
+- name: print the users_count
+  ansible.builtin.debug:
+    msg: "entries users_count: {{users_count}}"
+  when: component == "user"
+
+- name: "load user data"
+  ansible.builtin.shell: "mongosh --host {{MONGODB_HOST}} < /app/schema/{{component}}.js"
+  when: component == "user" and users_count.stdout == "0"  # keep double quotes
+  #ignore_errors: true
+  

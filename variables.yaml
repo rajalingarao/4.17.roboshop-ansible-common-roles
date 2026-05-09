@@ -1,0 +1,13 @@
+MONGODB_HOST: mongodb.lithesh.shop # submit your host
+REDIS_HOST: redis.lithesh.shop
+MYSQL_HOST: mysql.lithesh.shop
+RABBITMQ_HOST: rabbitmq.lithesh.shop
+
+CATALOGUE_HOST: catalogue.lithesh.shop
+USER_HOST: user.lithesh.shop
+CART_HOST: cart.lithesh.shop
+SHIPPING_HOST: shipping.lithesh.shop
+PAYMENT_HOST: payment.lithesh.shop
+DISPATCH_HOST: dispatch.lithesh.shop
+
+WEB_HOST: web.lithesh.shop
