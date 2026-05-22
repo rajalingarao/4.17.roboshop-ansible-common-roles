@@ -9,7 +9,8 @@ backend "s3" {
   bucket = "linga-devops-rs"
   key = "eleven-ec2-instances-common-roles-key"
   region = "us-east-1"
-  dynamodb_table="linga-devops-locking"
+  #dynamodb_table = "roboshop13-locking"
+  use_lockfile = true
   }
 }
 #provide authentication here
