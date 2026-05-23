@@ -1,7 +1,7 @@
 #!/bin/bash
 dnf install ansible -y
 cd /tmp
-# git clone https://github.com/Lingaiahthammisetti/4.15.roboshop-ansible.git
+# git clone https://github.com/rajalingarao/4.17.roboshop-ansible-common-roles.git
 # cd 4.15.roboshop-ansible
 # ansible-playbook -i inventory.ini mysql.yaml
 # ansible-playbook -i inventory.ini mysql.yaml #Run twice mysql.yaml
