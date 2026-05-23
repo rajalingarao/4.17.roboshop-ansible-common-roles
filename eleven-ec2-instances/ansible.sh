@@ -19,7 +19,6 @@ cd /tmp
 git clone https://github.com/rajalingarao/4.17.roboshop-ansible-common-roles.git
 cd 4.17.roboshop-ansible-common-roles
 ansible-playbook main.yaml -e component=mysql
-ansible-playbook main.yaml -e component=mysql #Run twice mysql.yaml
 ansible-playbook main.yaml -e component=mongodb
 ansible-playbook main.yaml -e component=redis
 ansible-playbook main.yaml -e component=rabbitmq
